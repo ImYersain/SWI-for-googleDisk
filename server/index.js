@@ -11,17 +11,17 @@ const app = express();
 dotenv.config();
 
 // Constants
-const PORT = process.env.PORT || 3008;
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_NAME = process.env.DB_NAME;
+const PORT = process.env.PORT || 3007;
+const DB_USER = process.env.DB_USER || 'test';
+const DB_PASSWORD = process.env.DB_PASSWORD || 'test123';
+const DB_NAME = process.env.DB_NAME || 'swi-bp';
 
 
-// Middleware (Функция которая или расширяет или дополняет базовые настройки экспресса)
-app.use(cors()) //для отправки запросов к бэкенду с разных IP адресов, поэтому обварачиваем корс либой
-app.use(fileUpload()) // для отправки файлов на бэк
-app.use(express.json()) // express будет понимать что данные будут приходить из реакт приложения в формате json
-app.use(express.static('uploads')) //путь к папке где у нас лежат статические файлы(которые мы загружаем)
+// Middleware 
+app.use(cors()) 
+app.use(fileUpload()) 
+app.use(express.json())
+app.use(express.static('uploads'))
 
 // Routes (http://localhost:3007)
 app.use('/api/auth', authRoute)
