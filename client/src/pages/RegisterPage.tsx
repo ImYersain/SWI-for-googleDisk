@@ -19,7 +19,7 @@ export const RegisterPage = () => {
   
   const students = localStorage.getItem('students');
 console.log(students);
-const whoCanStudents = students?.includes(username + ',')? true: false;
+const whoCanStudents = students?.includes(username)? true: false;
 
   useEffect(() => {
     if(status) toast(status);
