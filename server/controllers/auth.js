@@ -26,7 +26,7 @@ export const register = async (req, res) => {  //req это то что прих
 
         const token = jwt.sign(
             {id: newUser._id},
-            process.env.JWT_SECRET || 'hjkshdcjh43jkkhk9sdsufj7',
+            process.env.JWT_SECRET,
             {expiresIn: '30d'}
         );
 
@@ -61,7 +61,7 @@ export const login = async (req, res) => {
         }
         const token = jwt.sign(
             {id: user._id},
-            process.env.JWT_SECRET || 'hjkshdcjh43jkkhk9sdsufj7',
+            process.env.JWT_SECRET,
             {expiresIn: '30d'}
         );
 
@@ -87,7 +87,7 @@ export const getMe = async (req, res) => {
         }
         const token = jwt.sign(
             {id: user._id},
-            process.env.JWT_SECRET|| 'hjkshdcjh43jkkhk9sdsufj7',
+            process.env.JWT_SECRET,
             {expiresIn: '30d'}
         );
         return res.json({
