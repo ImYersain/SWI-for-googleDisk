@@ -1,5 +1,5 @@
 import axios from '../utils/axios';
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {IProject} from '../types/project';
 import {ProjectItem} from '../components/ProjectItem';
 import {useSelector} from 'react-redux';
@@ -11,18 +11,45 @@ export const ProjectsPage = () => {
   const userName = useSelector((state: RootState) => state.auth.user?.username);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const fetchMyProjects = async () => {
-    try {
-      const {data} = await axios.get('/projects/user/me');
-      setProjects(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchMyProjects = async () => {
+  //   try {
+  //     const {data} = await axios.get('/projects/user/me');
+  //     setProjects(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   fetchMyProjects();
+  // }, [fetchMyProjects]);
+
+  // useEffect(() => {
+  //   const fetchMyProjects = async () => {
+  //   try {
+  //   const { data } = await axios.get('/projects/user/me');
+  //   setProjects(data);
+  //   } catch (error) {
+  //   console.log(error);
+  //   }
+  //   };
+    
+  //   fetchMyProjects();
+  //   }, []);
+
+  const fetchMyProjects = useCallback(async () => {
+    try {
+    const {data} = await axios.get('/projects/user/me');
+    setProjects(data);
+    } catch (error) {
+    console.log(error);
+    }
+    }, [setProjects]);
+    
+    useEffect(() => {
     fetchMyProjects();
-  }, [fetchMyProjects]);
+    }, [fetchMyProjects]);
+    
 
   if (!projects.length) {
     return <div className="text-xl text-center text-white py-10">No projects yet</div>;
@@ -43,6 +70,8 @@ export const ProjectsPage = () => {
               <ProjectItem key={i} project={project} />
             </div>
           );
+        } else {
+          return null;  
         }
       })}
     </div>

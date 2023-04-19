@@ -96,10 +96,10 @@ export const ProjectPage = () => {
       fullEvaluation = 'N/A'
   }
 
-  return (
+   return (
     <div>
       <button className="flex justify-center items-center bg-[#8f0e07] text-xs text-white rounded-sm py-2 px-4 mt-4 hover:text-black">
-        <Link className="flex" to={'/home'}>
+        <Link className="flex" to={'/'}>
           Back
         </Link>
       </button>
@@ -132,8 +132,7 @@ export const ProjectPage = () => {
           <div className="text-black text-xl mt-2 text-center">{project.title}</div>
           <div className="text-[14px] text-black">Team: <span className='text-green-500 font-bold'>{project.team}</span></div>
           <p className="text-white pt-4">
-          {/* <ReactMarkdown children={project.text} /> */}
-          {project.text}
+            <ReactMarkdown children={project.text} />
           </p>
           <br />
           <br />

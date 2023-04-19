@@ -18,8 +18,7 @@ export const RegisterPage = () => {
   const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   
   const students = localStorage.getItem('students');
-console.log(students);
-const whoCanStudents = students?.includes(username)? true: false;
+  const whoCanStudents = students?.includes(username)? true: false;
 
   useEffect(() => {
     if(status) toast(status);

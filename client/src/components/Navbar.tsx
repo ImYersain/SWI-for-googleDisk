@@ -12,7 +12,6 @@ export const Navbar = () => {
   const studentName = useSelector((state: RootState) => state.auth.user?.studentname);
   const studentEmail = useSelector((state: RootState) => state.auth.user?.username);
   const isUcitel = useSelector((state: RootState) => state.auth.user?.username.includes('ucitel'));
-
   const activeStyles = {
     color: 'black',
   };
@@ -27,7 +26,7 @@ export const Navbar = () => {
   return (
     <div className="flex p-4 justify-between items-center bg-[#8f0e07]">
       <span className="flex justify-center items-center w-30 h-30 p-2 bg-[#757474] text-white text-[14px] rounded-sm">
-        <Link to={'/home'}>SWI projects</Link>
+        <Link to={'/'}>SWI projects</Link>
       </span>
 
       {isAuth && (
@@ -84,12 +83,6 @@ export const Navbar = () => {
         </ul>
       )}
 
-      {/* {isAuth &&
-        <div className='flex justify-center items-center bg-[#757474] text-xs text-white hover:text-black rounded-sm px-4 py-2'>
-        {userName === 'ucitel' ? <span>Hello, ucitel!</span> : <span>Hello, user!</span>}
-      </div>
-      } */}
-
       <div className="flex-col justify-center items-center">
         <div className="bg-[#757474] text-xs text-white hover:text-black rounded-sm px-4 py-2 text-center">
           {isAuth ? <button onClick={logoutHandler}>Logout</button> : <Link to={'/login'}>Login</Link>}
@@ -100,7 +93,7 @@ export const Navbar = () => {
             {isUcitel ? (
               <span className="text-green-500"> ucitel </span>
             ) : (
-              <span className="text-green-500"> {studentName || studentEmail} </span>
+              <span className="text-green-500"> { studentName || studentEmail} </span>
             )}
             !
           </div>

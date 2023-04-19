@@ -3,6 +3,7 @@ import {AiFillEye, AiOutlineMessage} from 'react-icons/ai';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { IProject } from '../types/project';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 
 interface IProjectItemProps {
@@ -34,7 +35,7 @@ export const ProjectItem = ({project}:IProjectItemProps) => {
 
         <div className='text-[16px] text-black text-2xl mt-2 text-center'><b>{project.title}</b></div>
         <div className='text-[14px] text-black'><b>Team: {project.team}</b></div>
-        <p className='text-white text-[14px] pt-4 line-clamp-4'>{project.text}</p>
+        <ReactMarkdown className='text-white text-[14px] pt-4 line-clamp-4' children={project.text} />
 
         <div className='flex gap-3 items-center mt-2'>
             <button className='flex items-center justify-center gap-2 text-xs text-white'>
