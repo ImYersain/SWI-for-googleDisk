@@ -18,7 +18,7 @@ export const ProjectPage = () => {
   const [comment, setComment] = useState<string>('');
   const user = useSelector((state: RootState) => state.auth.user);
   const { comments } = useSelector((state: RootState) => state.comment);
-
+  
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -195,20 +195,22 @@ export const ProjectPage = () => {
         </div>
         <div className="w-1/3 flex gap-2 p-8 bg-gray-200 flex-col rounded-xl">
           <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
-            <input
-              type="text"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              placeholder="Comment"
-              className="text-white w-full rounded-sm bg-[#757474] border border-black p-2 text-xs outline-none placeholder:text-gray-700"
-            />
-            <button
-              onClick={handleSubmit}
-              type="submit"
-              className="flex text-xs justify-center items-center bg-[#757474] rounded-sm py-2 px-4 text-white hover:text-black"
-            >
-              Send
-            </button>
+
+            {user &&
+              <><input
+                 type="text"
+                 value={comment}
+                 onChange={(e) => setComment(e.target.value)}
+                 placeholder="Comment"
+                 className="text-white w-full rounded-sm bg-[#757474] border border-black p-2 text-xs outline-none placeholder:text-gray-700" /><button
+                   onClick={handleSubmit}
+                   type="submit"
+                   className="flex text-xs justify-center items-center bg-[#757474] rounded-sm py-2 px-4 text-white hover:text-black"
+                 >
+                   Send
+                 </button></>
+            }
+
           </form>
             {comments?.map((cmt) => (
               <CommentItem key={cmt._id} cmt={cmt} />
